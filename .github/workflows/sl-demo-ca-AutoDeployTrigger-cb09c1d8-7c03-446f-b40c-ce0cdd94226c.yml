@@ -36,7 +36,7 @@ jobs:
           containerAppName: sl-demo-ca
           resourceGroup: swatiliya_rg
           imageToBuild: swaticr.azurecr.io/sl-demo-ca:${{ github.sha }}
-          dockerfilePath: Dockerfile
+          dockerfilePath: ./AzureContainerApp/Dockerfile
 
      
 
