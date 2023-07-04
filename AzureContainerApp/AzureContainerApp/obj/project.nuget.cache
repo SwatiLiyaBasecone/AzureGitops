@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "B3mmGXnPUJeG8klLc+x3NmwTo0qa+jxNBHCGr6tBhpIlOng/IL3esOrl+e+JKoe84BQ0Sg62gDZJ6h4HJfUPjA==",
+  "success": true,
+  "projectFilePath": "C:\\SL\\Learn\\AzureGitops\\AzureContainerApp\\AzureContainerApp\\AzureContainerApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Swati.Liya\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512"
+  ],
+  "logs": []
+}
