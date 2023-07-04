@@ -1,0 +1,42 @@
+name: Trigger auto deployment for sl-demo-ca
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - 'AzureContainerApp/**'
+    - '.github/workflows/sl-demo-ca-AutoDeployTrigger-cb09c1d8-7c03-446f-b40c-ce0cdd94226c.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.SLDEMOCA_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}/AzureContainerApp 
+          registryUrl: swaticr.azurecr.io
+          registryUsername: ${{ secrets.SLDEMOCA_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.SLDEMOCA_REGISTRY_PASSWORD }}
+          containerAppName: sl-demo-ca
+          resourceGroup: swatiliya_rg
+          imageToBuild: swaticr.azurecr.io/sl-demo-ca:${{ github.sha }}
+          dockerfilePath: ./AzureContainerApp/Dockerfile
+
+     
+
